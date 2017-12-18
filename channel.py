@@ -75,3 +75,29 @@ class Channel():
 
         for languaje in data['languajes']:
             self.languajes += [Languaje(data['languajes'])]
+
+    def get_name(self):
+        return self.name
+
+    def get_id(self):
+        return self.user_id
+
+    def get_viewer_amount(self):
+        return self.viewers
+
+    def get_total_views(self):
+        return self.total_views
+
+    def follower_number(self):
+        return self.followers
+
+    def get_subscribers(self):
+        return self.subscribers
+
+    def get_title(self):
+        return self.title
+
+    def get_category(self):
+        return self.category
+
+
