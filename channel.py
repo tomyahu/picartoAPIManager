@@ -1,34 +1,7 @@
 import jsonManager as jsonM
-from users import MultistreamUser
 
 preurl = 'https://api.picarto.tv/v1/'
 
-class Thumbnails():
-
-    def __init__(self, thumbnail_list):
-        self.web = thumbnail_list['web']
-        self.web_large = thumbnail_list['web_large']
-        self.mobile = thumbnail_list['mobile']
-        self.tablet = thumbnail_list['tablet']
-
-
-class Description_Panel():
-
-    def __init__(self, descrption_panel):
-        self.title = descrption_panel['title']
-        self.body = descrption_panel['body']
-        self.image = descrption_panel['image']
-        self.image_link = descrption_panel['image_link']
-        self.button_text = descrption_panel['button_text']
-        self.button_link = descrption_panel['button_link']
-        self.position = descrption_panel['position']
-
-
-class Languaje():
-
-    def __init__(self, languaje):
-        self.id = languaje['id']
-        self.country = languaje['name']
 
 
 class Channel():
