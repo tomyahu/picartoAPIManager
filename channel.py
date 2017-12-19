@@ -11,6 +11,16 @@ class Thumbnails():
         self.tablet = thumbnail_list['tablet']
 
 
+class MultistreamUser():
+
+    def __init__(self, user):
+        self.id = user['user_id']
+        self.name = user['name']
+        self.online = user['online']
+        self.adult = user['adult']
+
+
+
 class Description_Panel():
 
     def __init__(self, descrption_panel):
@@ -53,7 +63,7 @@ class Channel():
         self.subscribers = data['subscribers']
         self.adult = data['adult']
         self.category = data['category']
-        self.account_type = data['free']
+        self.account_type = data['account_type']
         self.commissions = data['commissions']
         self.title = data['title']
         self.description_panels = []
@@ -70,12 +80,17 @@ class Channel():
         for tag in data['tags']:
             self.tags += [tag]
 
-        self.multistream = data['multistream']
+        self.multistream = []
+
+        for user in data['multistream']:
+            self.multistream += [user]
+
         self.languajes = []
 
         for languaje in data['languajes']:
             self.languajes += [Languaje(data['languajes'])]
 
+    #Getters
     def get_name(self):
         return self.name
 
@@ -99,5 +114,40 @@ class Channel():
 
     def get_category(self):
         return self.category
+
+    def get_tags(self):
+        return self.tags
+
+    def get_languajes(self):
+        return self.languajes
+
+    def get_account_type(self):
+        return self.account_type
+
+    def get_description_panels(self):
+        return self.description_panels
+
+    def get_multistream_users(self):
+        return self.multistream
+
+    def is_online(self):
+        return self.online
+
+    def is_adult(self):
+        return self.adult
+
+    def is_acepting_commissions(self):
+        return self.commissions
+
+    def is_private(self):
+        return self.private
+
+    def is_gaming(self):
+        return self.gaming
+
+    def can_guests_chat(self):
+        return self.guest_chat
+
+
 
 
