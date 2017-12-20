@@ -1,15 +1,18 @@
+class DescriptionPanel:
 
-
-class Description_Panel():
-
-    def __init__(self, descrption_panel):
-        self.title = descrption_panel['title']
-        self.body = descrption_panel['body']
-        self.image = descrption_panel['image']
-        self.image_link = descrption_panel['image_link']
-        self.button_text = descrption_panel['button_text']
-        self.button_link = descrption_panel['button_link']
-        self.position = descrption_panel['position']
+    def __init__(self, data):
+        """
+        Creates a new instace of type Description Panel
+        :param data: The data of the Description Panel
+        """
+        # type: dict -> None
+        self.title = data['title']
+        self.body = data['body']
+        self.image = data['image']
+        self.image_link = data['image_link']
+        self.button_text = data['button_text']
+        self.button_link = data['button_link']
+        self.position = data['position']
 
     def get_title(self):
         return self.title

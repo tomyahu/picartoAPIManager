@@ -1,7 +1,7 @@
 from tools import jsonManager as jsonM
-from components.descriptionPanel import Description_Panel
+from components.descriptionPanel import DescriptionPanel
 from components.languaje import Languaje
-from components.thumbnails import Thumbnails
+from components.thumbnail import Thumbnail
 from user.user import MultistreamUser
 from tools.constants import preurl
 
@@ -20,7 +20,7 @@ class Channel:
         self.online = data['online']
         self.viewers = data['viewers']
         self.total_views = data['viewers_total']
-        self.thumbnails = Thumbnails(data['thumbnails'])
+        self.thumbnails = Thumbnail(data['thumbnails'])
 
         self.followers = data['followers']
         self.subscribers = data['subscribers']
@@ -32,7 +32,7 @@ class Channel:
         self.description_panels = list()
 
         for panel in data['description_panels']:
-            self.description_panels.append(Description_Panel(panel))
+            self.description_panels.append(DescriptionPanel(panel))
 
         self.private = data['private']
         self.gaming = data['gaming']
