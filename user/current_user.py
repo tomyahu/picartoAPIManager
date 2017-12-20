@@ -3,7 +3,7 @@ from channel.channel import Channel
 from user import RegularUser
 
 
-class CurrentUser():
+class CurrentUser:
 
     def __init__(self):
         data = jsonM.get_from_url('https://api.picarto.tv/v1/user')
@@ -13,25 +13,25 @@ class CurrentUser():
         self.private_key = data['private_key']
         self.nsfw_enabled = data['nsfw_enabled']
         self.nsfw_app = data['nsfw_app']
-        self.follows = []
+        self.follows = list(RegularUser)
 
         for follow in data['following']:
-            self.follows += [RegularUser(follow)]
+            self.follows.append(RegularUser(follow))
 
-        self.followers = []
+        self.followers = list()
 
         for follower in data['followers']:
-            self.followers += [RegularUser(follower)]
+            self.followers.append(RegularUser(follower))
 
-        self.subscriptions = []
+        self.subscriptions = list()
 
         for subscription in data['subscriptions']:
-            self.subscriptions += [RegularUser(subscription)]
+            self.subscriptions.append(RegularUser(subscription))
 
-        self.subscribers = []
+        self.subscribers = list()
 
         for subscriber in data['subscribers']:
-            self.subscribers += [RegularUser(subscriber)]
+            self.subscribers.append(RegularUser(subscriber))
 
     def get_email(self):
         return self.email

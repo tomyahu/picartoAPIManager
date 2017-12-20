@@ -1,7 +1,8 @@
 import jsonManager as jsonM
-from .components.descriptionPanel import Description_Panel
-from .components.languaje import Languaje
-from .components.thumbnails import Thumbnails
+from components.descriptionPanel import Description_Panel
+from components.languaje import Languaje
+from components.thumbnails import Thumbnails
+from user.user import MultistreamUser
 
 preurl = 'https://api.picarto.tv/v1/'
 
@@ -34,29 +35,29 @@ class Channel():
         self.account_type = data['account_type']
         self.commissions = data['commissions']
         self.title = data['title']
-        self.description_panels = []
+        self.description_panels = list()
 
         for panel in data['description_panels']:
-            self.description_panels += [Description_Panel(panel)]
+            self.description_panels.add(Description_Panel(panel))
 
         self.private = data['private']
         self.gaming = data['gaming']
         self.guest_chat = data['guest_chat']
         self.last_live = data['last_live']
-        self.tags = []
+        self.tags = list()
 
         for tag in data['tags']:
-            self.tags += [tag]
+            self.tags.append(tag)
 
-        self.multistream = []
+        self.multistream = list()
 
         for user in data['multistream']:
-            self.multistream += [user]
+            self.multistream.append(MultistreamUser(user))
 
-        self.languajes = []
+        self.languajes = list()
 
         for languaje in data['languajes']:
-            self.languajes += [Languaje(data['languajes'])]
+            self.languajes.append(Languaje(languaje))
 
     #Getters
     def get_name(self):
