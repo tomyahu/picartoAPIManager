@@ -1,5 +1,6 @@
 from notifications import Notification
-import jsonManager as jsonM
+from tools import jsonManager as jsonM
+
 
 def get_notifications():
     notifications = list()
@@ -9,3 +10,12 @@ def get_notifications():
         notifications.append(Notification(notification))
 
     return notifications
+
+def filter_notifications_by_type(notifications, type):
+    new_notifications = list()
+
+    for notification in notifications:
+        if notification.get_type() == type:
+            new_notifications.append(notification)
+
+    return new_notifications

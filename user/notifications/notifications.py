@@ -1,5 +1,3 @@
-import jsonManager as jsonM
-
 class Notification():
 
     def __init__(self, data):

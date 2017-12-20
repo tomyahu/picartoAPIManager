@@ -1,4 +1,4 @@
-import jsonManager as jsonM
+from tools import jsonManager as jsonM
 from channel.channel import Channel
 from user import RegularUser
 
