@@ -1,25 +1,19 @@
-import jsonManager as jsonM
+from tools import jsonManager as jsonM
 from components.descriptionPanel import Description_Panel
 from components.languaje import Languaje
 from components.thumbnails import Thumbnails
 from user.user import MultistreamUser
+from tools.constants import preurl
 
-preurl = 'https://api.picarto.tv/v1/'
 
-class Channel():
-
-    def __init__(self, name):
-        data = jsonM.get_from_url(preurl + '/channel/name/' + name)
-        self.set_data(data)
-
-    def __init__(self, id):
-        data = jsonM.get_from_url(preurl + '/channel/id/' + id)
-        self.set_data(data)
+class Channel:
 
     def __init__(self, data):
-        self.set_data(data)
-
-    def set_data(self, data):
+        """
+        Creates a new instance of a channel
+        :param data: The data of the channel
+        """
+        # type: dict -> None
         self.name = data['name']
         self.user_id = data['user_id']
         self.avatar = data['avatar']
@@ -38,11 +32,11 @@ class Channel():
         self.description_panels = list()
 
         for panel in data['description_panels']:
-            self.description_panels.add(Description_Panel(panel))
+            self.description_panels.append(Description_Panel(panel))
 
         self.private = data['private']
         self.gaming = data['gaming']
-        self.guest_chat = data['guest_chat']
+        self.guestChat = data['guest_chat']
         self.last_live = data['last_live']
         self.tags = list()
 
@@ -59,7 +53,7 @@ class Channel():
         for languaje in data['languajes']:
             self.languajes.append(Languaje(languaje))
 
-    #Getters
+    # Getters
     def get_name(self):
         return self.name
 
@@ -115,8 +109,26 @@ class Channel():
         return self.gaming
 
     def can_guests_chat(self):
-        return self.guest_chat
+        return self.guestChat
 
 
+def get_channel_from_id(user_id):
+    """
+    Creates a channel object from a given id
+    :param user_id: The id of the channel
+    :return: The channel corresponding to the id
+    """
+    # type: int -> Channel
+    data = jsonM.get_from_url(preurl + '/channel/id/' + str(user_id))
+    return Channel(data)
 
 
+def get_channel_from_name(name):
+    """
+    Creates a channel object from a given name
+    :param name: The name of the user's channel
+    :return: The Channle corresponding to the name given
+    """
+    # type: str -> Channel
+    data = jsonM.get_from_url(preurl + '/channel/name/' + name)
+    return Channel(data)
