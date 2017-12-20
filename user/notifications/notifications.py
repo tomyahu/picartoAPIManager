@@ -1,6 +1,11 @@
-class Notification():
+class Notification:
 
     def __init__(self, data):
+        """
+        Creates a new instance of the type Notification
+        :param data: The data of the Notification
+        """
+        # type: dict -> None
         self.channel = data['channel']
         self.type = data['type']
         self.read = not data['unread']

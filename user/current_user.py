@@ -6,6 +6,10 @@ from user import RegularUser
 class CurrentUser:
 
     def __init__(self):
+        """
+        Creates an instace of the type Current User
+        """
+        # type: () -> None
         data = jsonM.get_from_url('https://api.picarto.tv/v1/user')
         self.channel = Channel(data['channel_details'])
         self.email = data['email']
@@ -13,7 +17,7 @@ class CurrentUser:
         self.private_key = data['private_key']
         self.nsfw_enabled = data['nsfw_enabled']
         self.nsfw_app = data['nsfw_app']
-        self.follows = list(RegularUser)
+        self.follows = list()
 
         for follow in data['following']:
             self.follows.append(RegularUser(follow))
