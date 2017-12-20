@@ -2,11 +2,8 @@ import jsonManager as jsonM
 from .components.descriptionPanel import Description_Panel
 from .components.languaje import Languaje
 from .components.thumbnails import Thumbnails
-from users import MultistreamUser
 
 preurl = 'https://api.picarto.tv/v1/'
-
-
 
 class Channel():
 
@@ -16,6 +13,9 @@ class Channel():
 
     def __init__(self, id):
         data = jsonM.get_from_url(preurl + '/channel/id/' + id)
+        self.set_data(data)
+
+    def __init__(self, data):
         self.set_data(data)
 
     def set_data(self, data):
