@@ -26,3 +26,14 @@ class Notification:
 
     def has_icon(self):
         return self.icon
+
+    def __eq__(self, other):
+        """
+        Checks if two notifications are the same
+        :param other: The notification to compare to
+        :return: True if the Notifications are the same and False if not
+        """
+        # type: Notification -> Notification
+        same_channel = self.get_channel() == other.get_channel()
+        same_type = self.get_type() == other.get_type()
+        return same_channel and same_type
