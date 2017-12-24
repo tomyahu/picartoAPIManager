@@ -1,9 +1,9 @@
-from tools import jsonManager as jsonM
+from ..tools import jsonManager as jsonM
 from components.descriptionPanel import DescriptionPanel
 from components.languaje import Languaje
 from components.thumbnail import Thumbnail
-from user.user import MultistreamUser
-from tools.constants import preurl
+from ..user.user import MultistreamUser
+from ..tools.constants import preurl
 
 
 class Channel:

@@ -1,4 +1,4 @@
-class Thumbnail():
+class Thumbnail:
 
     def __init__(self, data):
         """

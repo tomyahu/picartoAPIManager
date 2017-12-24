@@ -6,11 +6,12 @@ class Notification:
         :param data: The data of the Notification
         """
         # type: dict -> None
+        self.data = data
         self.channel = data['channel']
         self.type = data['type']
         self.read = not data['unread']
         self.url = data['uri']
-        self.icon = data['has_icon']
+        self.icon = data['hasIcon']
 
     def get_channel(self):
         return self.channel
@@ -23,6 +24,9 @@ class Notification:
 
     def is_read(self):
         return self.read
+
+    def get_dictionary(self):
+        return self.data
 
     def has_icon(self):
         return self.icon

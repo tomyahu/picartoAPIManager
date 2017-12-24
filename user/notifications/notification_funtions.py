@@ -1,5 +1,5 @@
 from notifications import Notification
-from tools import jsonManager as jsonM
+from model.tools import jsonManager as jsonM
 
 
 def get_notifications():
@@ -11,8 +11,9 @@ def get_notifications():
     notifications = list()
     data = jsonM.get_from_url('https://api.picarto.tv/v1/user/notifications')
 
-    for notification in data:
-        notifications.append(Notification(notification))
+    if data is not None:
+        for notification in data:
+            notifications.append(Notification(notification))
 
     return notifications
 
