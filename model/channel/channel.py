@@ -1,9 +1,10 @@
-from ..tools import jsonManager as jsonM
+from model.tools import jsonManager as jsonM
+
 from components.descriptionPanel import DescriptionPanel
 from components.languaje import Languaje
 from components.thumbnail import Thumbnail
-from ..user.user import MultistreamUser
-from ..tools.constants import preurl
+from model.tools.constants import preurl
+from model.user.regular_user import MultistreamUser
 
 
 class Channel:
@@ -48,10 +49,10 @@ class Channel:
         for user in data['multistream']:
             self.multistream.append(MultistreamUser(user))
 
-        self.languajes = list()
+        self.languages = list()
 
-        for languaje in data['languajes']:
-            self.languajes.append(Languaje(languaje))
+        for language in data['languages']:
+            self.languages.append(Languaje(language))
 
     # Getters
     def get_name(self):
@@ -82,7 +83,7 @@ class Channel:
         return self.tags
 
     def get_languajes(self):
-        return self.languajes
+        return self.languages
 
     def get_account_type(self):
         return self.account_type

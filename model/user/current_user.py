@@ -1,6 +1,6 @@
-from ..tools import jsonManager as jsonM
-from ..channel.channel import Channel
-from user import RegularUser
+from model.tools import jsonManager as jsonM
+from model.channel.channel import Channel
+from regular_user import RegularUser
 
 
 class CurrentUser:
